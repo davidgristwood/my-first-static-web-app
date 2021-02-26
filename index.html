@@ -9,19 +9,17 @@
 </head>
 
 <body>
-  <main>
-    <h1>Vanilla JavaScript App</h1>
-    <p>Loading message from the API: <b id="name"> ... </b></p>
-  </main>
+    <main>
+      <h1>Vanilla JavaScript App</h1>
+      <p>Loading message from the API: <b id="name"> ... </b></p>
+    </main>
+
+    <script>
+      (async function() {
+          let { text } = await( await fetech('/api/GetMessage')).json();
+          document.querySelector('#name').textContent = text;
+      }())
+    </script>
 </body>
-
-<script>
-  (async function() {
-      let {text} = await( await fetech('/api/GetMessage')).json();
-      document.querySelector('#name').textContent = text;
-  }())
-</script>
-
-
 
 </html>
